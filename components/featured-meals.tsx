@@ -30,7 +30,7 @@ export function FeaturedMeals() {
                     setMeals(foods)
                 } 
             } catch (error) {
-                
+                console.log(error)
             }
         }
 
