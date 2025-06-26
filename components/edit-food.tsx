@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { foodSchema,FoodFormData } from "@/zod-validation/validate"
+import { FoodFormData } from "@/zod-validation/validate"
 import { food } from "./featured-meals"
 
 
@@ -31,7 +31,7 @@ export default function EditMealForm({id}:{id:string}) {
         }
 
         fetchFood()
-    },[])
+    },[id])
 
   const [formData, setFormData] = useState<FoodFormData>({
     foodName: food?.foodName ?? "",
