@@ -71,8 +71,6 @@ export default function EditMealForm({id}:{id:string}) {
 
     // Validate required fields
 
-    const result = foodSchema.safeParse(formData);
-
 
     try {
         const res = await fetch(`https://food-app-backend-henna-six.vercel.app/api/food/${id}`,{
