@@ -8,12 +8,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { food } from "./featured-meals"
-import { foodSchema } from "@/zod-validation/validate"
+import { foodSchema,FoodFormData } from "@/zod-validation/validate"
 
 
 export default function AddMealForm() {
-  const [formData, setFormData] = useState<food>({
+  const [formData, setFormData] = useState<FoodFormData>({
     foodName: "",
     foodRating: 0,
     foodPrice:0,
@@ -82,6 +81,8 @@ export default function AddMealForm() {
         restaurantLogo: fieldErrors.restaurantLogo ? fieldErrors.restaurantLogo[0] : "",
         restaurantStatus: fieldErrors.restaurantStatus ? fieldErrors.restaurantStatus[0] : "",
       });
+
+      setLoading(false)
     }
 
     try {
@@ -94,7 +95,8 @@ export default function AddMealForm() {
         })
 
         if (res.ok){
-            window.location.reload
+            window.location.reload()
+            console.log("Form submitted:", formData)
         }
     } catch (error) {
         console.error(error)
@@ -244,7 +246,7 @@ export default function AddMealForm() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="open">Open</SelectItem>
-                  <SelectItem value="close">Close</SelectItem>
+                  <SelectItem value="closed">Close</SelectItem>
                 </SelectContent>
               </Select>
 
